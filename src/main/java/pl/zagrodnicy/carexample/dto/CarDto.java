@@ -1,4 +1,4 @@
-package pl.zagrodnicy.carexample;
+package pl.zagrodnicy.carexample.dto;
 
 public class CarDto {
     private Long id;

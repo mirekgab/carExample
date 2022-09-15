@@ -1,4 +1,4 @@
-package pl.zagrodnicy.carexample;
+package pl.zagrodnicy.carexample.exception;
 
 public class CarException extends RuntimeException {
 

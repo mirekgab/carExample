@@ -1,4 +1,4 @@
-package pl.zagrodnicy.carexample;
+package pl.zagrodnicy.carexample.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

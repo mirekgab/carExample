@@ -5,6 +5,7 @@ public class CarDto {
     private String model;
     private String name;
 
+
     public CarDto() {
     }
 
@@ -36,5 +37,14 @@ public class CarDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "CarDto{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

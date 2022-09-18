@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Car {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String model;
     private String name;
@@ -44,5 +44,14 @@ public class Car {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

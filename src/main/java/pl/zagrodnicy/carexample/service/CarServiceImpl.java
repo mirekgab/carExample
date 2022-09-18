@@ -2,9 +2,9 @@ package pl.zagrodnicy.carexample.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.zagrodnicy.carexample.mapper.CarMapper;
 import pl.zagrodnicy.carexample.dto.CarDto;
 import pl.zagrodnicy.carexample.exception.CarException;
+import pl.zagrodnicy.carexample.mapper.CarMapper;
 import pl.zagrodnicy.carexample.model.Car;
 import pl.zagrodnicy.carexample.repository.CarRepository;
 
@@ -29,7 +29,10 @@ public class CarServiceImpl implements CarServiceInterface {
                     .collect(Collectors.toList());
             return carDtos;
         }
+        //tutaj nie wyrzucałbym wyjątku tylko zwrócił pustą listę
+        //to frontend będzie sprawdzał czy lista jest pusta
         throw new CarException("no cars in database");
+        //return new LinkedList<CarDto>();
     }
 
     public CarDto findById(Long id) {

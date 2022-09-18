@@ -17,7 +17,7 @@ public class DemoApplication implements CommandLineRunner {
         SpringApplication.run(DemoApplication.class, args);
     }
 
-    public void run(String[] args) throws Exception {
+    public void run(String[] args) {
         repository.save(new Car(1L, "name1", "model1"));
         repository.save(new Car(2L, "name1", "model2"));
         repository.save(new Car(3L, "name2", "model21"));

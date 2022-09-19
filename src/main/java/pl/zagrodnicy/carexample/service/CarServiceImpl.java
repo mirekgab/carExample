@@ -8,6 +8,7 @@ import pl.zagrodnicy.carexample.mapper.CarMapper;
 import pl.zagrodnicy.carexample.model.Car;
 import pl.zagrodnicy.carexample.repository.CarRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,18 +23,17 @@ public class CarServiceImpl implements CarServiceInterface {
 
     public List<CarDto> findAll() {
         List<Car> cars = repository.findAll();
-        if (cars != null && !cars.isEmpty()) {
-            List<CarDto> carDtos = cars
+        if (!cars.isEmpty()) {
+            return cars
                     .stream()
                     .map(CarMapper.INSTANCE::carToCarDto)
                     .collect(Collectors.toList());
-            return carDtos;
+        } else {
+            //https://stackoverflow.com/questions/13366730/proper-rest-response-for-empty-table
+            return new ArrayList<>();
         }
-        //tutaj nie wyrzucałbym wyjątku tylko zwrócił pustą listę
-        //to frontend będzie sprawdzał czy lista jest pusta
-        throw new CarException("no cars in database");
-        //return new LinkedList<CarDto>();
     }
+
 
     public CarDto findById(Long id) {
         Car car = repository
@@ -41,6 +41,11 @@ public class CarServiceImpl implements CarServiceInterface {
                 .orElseThrow(
                         () -> new CarException("car not found"));
         return CarMapper.INSTANCE.carToCarDto(car);
+    }
+
+    public void saveNew(CarDto carDto) {
+        Car car = CarMapper.INSTANCE.carDtoToCar(carDto);
+        Car saveCar = repository.save(car);
     }
 
 }
